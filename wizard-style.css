@@ -1,0 +1,41 @@
+h1 {
+  font-size: 4rem;
+  text-align: center;
+  color: yellow;
+  font-weight: bold;
+  font-family: "Times New Roman";
+  width: min-content;
+  position: relative;
+  display: inline-block;
+  padding: 20px 40px;
+  z-index: 1;
+  user-select: none;
+}
+
+h1::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  background-color: red; /* Background color */
+  transform: translate(-50%, -50%) rotate(45deg);
+  z-index: -1;
+}
+
+#header-div {
+  width: min-content;
+  margin-inline: auto;
+  margin-block: 50px;
+}
+
+html {
+  background-color: #1b2860;
+  color: white;
+}
+
+#root {
+  width: min-content;
+  margin-inline: auto;
+}
