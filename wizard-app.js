@@ -88,7 +88,7 @@ function AddPlayerForm({ addPlayer }) {
 // Game Component for Adding Players and Starting the Game
 function Game({ players, startGame }) {
   return (
-    <div>
+    <div id="game-div">
       <h2>Players ({players.length})</h2>
       <ul>
         {players.map((player, index) => (
@@ -118,8 +118,10 @@ function BettingPhase({ players, setBets, proceedToScoring, round }) {
   };
 
   return (
-    <div>
-      <h2>Betting Phase - Round {round}</h2>
+    <div id="game-div">
+      <h2>
+        Betting Phase <span id="header-diamond">◆</span> Round {round}
+      </h2>
       <table>
         <thead>
           <tr>
@@ -169,8 +171,10 @@ function ScoringPhase({
   };
 
   return (
-    <div>
-      <h2>Scoring Phase - Round {round}</h2>
+    <div id="game-div">
+      <h2>
+        Scoring Phase <span id="header-diamond">◆</span> Round {round}
+      </h2>
       <table>
         <thead>
           <tr>
@@ -208,8 +212,10 @@ function ScoreViewPhase({ players, scores, nextRound, round, endGame }) {
     .sort((a, b) => b.score - a.score); // Sort descending by score
 
   return (
-    <div>
-      <h2>Viewing Phase - Round {round}</h2>
+    <div id="game-div">
+      <h2>
+        Viewing Phase <span id="header-diamond">◆</span> Round {round}
+      </h2>
       <table>
         <thead>
           <tr>
