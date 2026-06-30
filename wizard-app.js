@@ -74,12 +74,7 @@ function AddPlayerForm({ addPlayer }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Player name"
-      />
+      <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Player name" />
       <button type="submit">Add</button>
     </form>
   );
@@ -134,11 +129,7 @@ function BettingPhase({ players, setBets, proceedToScoring, round }) {
             <tr key={index}>
               <td>{player}</td>
               <td>
-                <input
-                  type="number"
-                  value={bets[index]}
-                  onChange={(e) => handleBetChange(index, e.target.value)}
-                />
+                <input type="number" value={bets[index]} onChange={(e) => handleBetChange(index, e.target.value)} />
               </td>
             </tr>
           ))}
@@ -150,13 +141,7 @@ function BettingPhase({ players, setBets, proceedToScoring, round }) {
 }
 
 // Scoring Phase Component
-function ScoringPhase({
-  players,
-  bets,
-  proceedToScoreView,
-  round,
-  updateScores,
-}) {
+function ScoringPhase({ players, bets, proceedToScoreView, round, updateScores }) {
   const [results, setResults] = React.useState(players.map(() => 0));
 
   const handleResultChange = (index, value) => {
@@ -232,11 +217,7 @@ function ScoreViewPhase({ players, scores, nextRound, round, endGame }) {
           ))}
         </tbody>
       </table>
-      {round < 10 ? (
-        <button onClick={nextRound}>Next Round</button>
-      ) : (
-        <button onClick={endGame}>End Game</button>
-      )}
+      {round < 10 ? <button onClick={nextRound}>Next Round</button> : <button onClick={endGame}>End Game</button>}
     </div>
   );
 }
@@ -298,12 +279,7 @@ function App() {
           <Game players={players} startGame={startGame} />
         </>
       ) : phase === "betting" ? (
-        <BettingPhase
-          players={players}
-          setBets={setBets}
-          proceedToScoring={proceedToScoring}
-          round={round}
-        />
+        <BettingPhase players={players} setBets={setBets} proceedToScoring={proceedToScoring} round={round} />
       ) : phase === "scoring" ? (
         <ScoringPhase
           players={players}
@@ -313,14 +289,22 @@ function App() {
           updateScores={updateScores}
         />
       ) : (
-        <ScoreViewPhase
-          players={players}
-          scores={scores}
-          nextRound={nextRound}
-          round={round}
-          endGame={endGame}
-        />
+        <ScoreViewPhase players={players} scores={scores} nextRound={nextRound} round={round} endGame={endGame} />
       )}
+      <div id="last-section">
+        <p>
+          Check out the full project source code on{" "}
+          <a target="_blank" href="https://github.com/Nathan-Call/wizard">
+            GitHub
+          </a>
+        </p>
+        <p>
+          Learn more about the game Wizard on{" "}
+          <a target="_blank" href="https://en.wikipedia.org/wiki/Wizard_(card_game)">
+            Wikipedia
+          </a>
+        </p>
+      </div>
     </React.StrictMode>
   );
 }
